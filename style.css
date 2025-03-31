@@ -1,16 +1,23 @@
 body {
     background-color: rgb(69, 69, 69);
     font: 13pt Arial;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    align-items: flex-start;
 }
 
-main {
+main, iframe {
     background-color: white;
-    width: 500px;
+    width: 90%;
     padding: 20px;
-    margin: auto;
+    margin: 0.5em auto;
     border-radius: 10px;
     box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.529);
 }
+iframe, section {
+    height: 100%;
+}
+
 
 h1 {
     color: darkgoldenrod;
