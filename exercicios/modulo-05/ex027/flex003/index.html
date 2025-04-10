@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Flexible Box</title>
+    <style>
+        body {
+            width: 80%;
+            margin: auto;
+        }
+        div.conteiner {
+            background-color: lightsalmon;
+            display: flex;
+            margin-bottom: 40px;
+        }
+        .row-nowrap {
+            /*por padrão
+            flex-direction: row;
+            flex-wrap: nowrap;*/
+            /*outra forma de escrever:*/
+            flex-flow: row nowrap
+        }
+
+        .row-wrap {
+            flex-flow: row wrap
+        }
+
+        .row-wrap-reverse {
+            flex-flow: row wrap-reverse
+        }
+
+        .column-wrap {
+            flex-flow: column wrap
+        }
+
+        .column-wrap-reverse {
+            flex-flow: column wrap-reverse
+        }
+
+        div.item {
+            background-color: lightskyblue;
+            border: 1px solid black;
+            text-align: center;
+            flex: auto; 
+        }
+
+        .oscilar {
+            width: 100%;
+            animation: oscilar-anim 3s infinite alternate;
+        }
+
+        @keyframes oscilar-anim {
+            0% {
+                width: 100%;
+            }
+            100% {
+                width: 40%;
+            }
+        }
+
+        .oscilary {
+            height: 100%;
+            animation: oscilary-anim 3s infinite alternate;
+        }
+
+        @keyframes oscilary-anim {
+            0% {
+                height: 200px;
+            }
+            100% {
+                height: 100px;
+            }
+        }
+
+
+    </style>
+</head>
+<body>
+    <h1>No elemento Pai</h1>
+    <p>display: flex;</p>
+    <p>flex-flow: row nowrap /*Esse vem por padrão*/</p>
+    <div class="conteiner row-nowrap oscilar">
+        <div class="item">Exemplo de bloco A</div>
+        <div class="item">Exemplo de bloco B</div>
+        <div class="item">Exemplo de bloco C</div>
+        <div class="item">Exemplo de bloco D</div>
+    </div>
+
+    <p>flex-flow: row wrap</p>
+    <div class="conteiner row-wrap oscilar">
+        <div class="item">Exemplo de bloco A</div>
+        <div class="item">Exemplo de bloco B</div>
+        <div class="item">Exemplo de bloco C</div>
+        <div class="item">Exemplo de bloco D</div>
+        <div class="item">Exemplo de bloco E</div>
+        <div class="item">Exemplo de bloco F</div>
+        <div class="item">Exemplo de bloco G</div>
+    </div>
+
+    <p>flex-flow: row wrap-reverse</p>
+    <div class="conteiner row-wrap-reverse oscilar">
+        <div class="item">Exemplo de bloco A</div>
+        <div class="item">Exemplo de bloco B</div>
+        <div class="item">Exemplo de bloco C</div>
+        <div class="item">Exemplo de bloco D</div>
+        <div class="item">Exemplo de bloco E</div>
+        <div class="item">Exemplo de bloco F</div>
+        <div class="item">Exemplo de bloco G</div>
+    </div>
+
+    <p>flex-flow: column wrap</p>
+    <div class="conteiner column-wrap oscilary">
+        <div class="item">Exemplo de bloco A</div>
+        <div class="item">Exemplo de bloco B</div>
+        <div class="item">Exemplo de bloco C</div>
+        <div class="item">Exemplo de bloco D</div>
+        <div class="item">Exemplo de bloco E</div>
+        <div class="item">Exemplo de bloco F</div>
+        <div class="item">Exemplo de bloco G</div>
+    </div>
+
+    <p>flex-flow: column wrap-reverse</p>
+    <div class="conteiner column-wrap-reverse oscilary">
+        <div class="item">Exemplo de bloco A</div>
+        <div class="item">Exemplo de bloco B</div>
+        <div class="item">Exemplo de bloco C</div>
+        <div class="item">Exemplo de bloco D</div>
+        <div class="item">Exemplo de bloco E</div>
+        <div class="item">Exemplo de bloco F</div>
+        <div class="item">Exemplo de bloco G</div>
+    </div>
+</body>
+</html>
