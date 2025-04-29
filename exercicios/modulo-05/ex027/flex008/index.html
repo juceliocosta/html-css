@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Flexible Box</title>
+    <style>
+        body {
+            width: 80vw;
+            margin: auto;
+        }
+        div.conteiner {
+            background-color: lightsalmon;
+
+            display: flex;
+            flex-flow: row wrap;            
+            height: 400px;
+        }
+
+        div.item {
+            background-color: lightskyblue;
+            border: 1px solid black;
+            text-align: center;
+            width: 200px;
+            padding: 40px 0px;
+            
+        }
+        .code {
+            background-color: wheat;
+        }
+
+        .as-auto {
+            align-self: auto;
+        }
+        .as-center {
+            align-self: center;
+        }
+        .as-end {
+            align-self: flex-end;
+        }
+        .as-start {
+            align-self: flex-start;
+        }
+        .as-stretch {
+            align-self: stretch;
+        }
+    </style>
+</head>
+<body>
+    <h1>o <strong><code>align-self</code></strong> se aplica aos itens do elemento Pai na direção transversal</h1>
+    <div class="code">
+        <code><del>align-items: stretch;</del></code>
+    </div>
+    <div class="conteiner">
+        <div class="item as-auto">
+            align-self: auto;
+            <p>herdará o alinhamento do Pai, que por padrão é stretch</p>
+        </div>
+        <div class="item as-end">align-self: flex-end;</div>
+        <div class="item as-center">align-self: center;</div>
+        <div class="item as-start">align-self: flex-start;</div>
+        <div class="item stretch">align-self: stretch;</div>       
+    </div>
+</body>
+</html>

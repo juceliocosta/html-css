@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Flexible Box</title>
+    <style>
+        body {
+            box-sizing: border-box;
+            width: 80vw;
+            margin: auto;
+        }
+
+        div.conteiner {
+            background-color: lightsalmon;
+            display: flex;
+            flex-flow: row wrap;
+        }
+
+        div.item {
+            background-color: lightskyblue;
+            border: 1px solid black;
+            width: 100px;
+            text-align: center;
+            padding: 10px 0px;
+        }
+
+        span {
+            font-size: 20px;
+            padding: 4px;
+            border-radius: 50%;
+            background-color: aliceblue;
+        }
+
+        input[type="number"] {
+            width: 26px;
+        }
+    </style>
+</head>
+
+<body>
+    <div>
+        <h1>Propriedade Order</h1>
+        <p>é uma propriedade utilizada pelos filhos do elemento que utiliza o FlexBox</p>
+    </div>
+    <div class="conteiner" id="conteiner">
+        <div class="item" id="item-medicar">
+            <span>💊</span>
+            <p>Medicar</p>
+            order: <input type="number" value="0" placeholder="0" id="Medicar">
+        </div>
+
+        <div class="item" id="item-construir">
+            <span>🔨</span>
+            <p>Construir</p>
+            order: <input type="number" value="0" placeholder="0" id="Construir">
+        </div>
+
+        <div class="item" id="item-plantar">
+            <span>🌱</span>
+            <p>Plantar</p>
+            order: <input type="number" value="0" placeholder="0" id="Plantar">
+        </div>
+
+        <div class="item" id="item-cacar">
+            <span>🏹</span>
+            <p>Caçar</p>
+            order: <input type="number" value="0" placeholder="0" id="Cacar">
+        </div>
+
+        <div class="item" id="item-cozinhar">
+            <span>🍳</span>
+            <p>Cozinhar</p>
+            order: <input type="number" value="0" placeholder="0" id="Cozinhar">
+        </div>
+
+        <div class="item" id="item-podar">
+            <span>🪓</span>
+            <p>Podar</p>
+            order: <input type="number" value="0" placeholder="0" id="Podar">
+        </div>
+
+        <div class="item" id="item-minerar">
+            <span>⛏️</span>
+            <p>Minerar</p>
+            order: <input type="number" value="0" placeholder="0" id="Minerar">
+        </div>
+
+        <div class="item" id="item-fabricar">
+            <span>⚙️</span>
+            <p>Fabricar</p>
+            order: <input type="number" value="0" placeholder="0" id="Fabricar">
+        </div>
+
+        <div class="item" id="item-pesquisar">
+            <span>📚</span>
+            <p>Pesquisar</p>
+            order: <input type="number" value="0" placeholder="0" id="Pesquisar">
+        </div>
+    </div>
+
+    <script>
+        document.querySelectorAll('.item').forEach(item => {
+            const input = item.querySelector('input');
+            input.addEventListener('input', () => {
+                item.style.order = input.value;
+            });
+        });
+    </script>
+
+    <!--
+    <script src="https://cdn.jsdelivr.net/npm/sortablejs@1.15.0/Sortable.min.js"></script>
+    <script>
+    new Sortable(conteiner, {
+        animation: 150
+    });
+    </script>
+    -->
+</body>
+
+
+</html>
