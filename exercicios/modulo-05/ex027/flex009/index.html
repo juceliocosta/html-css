@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Propriedade flex-basis em Flexbox</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            border: 0;
+            box-sizing: border-box;
+        }
+        main {
+            margin: auto;
+            width: 80vw;
+        }
+        header {
+            margin: auto;
+            width: 100vw;
+            height: 120px;
+            background-color: lightgray;
+            position: fixed;
+            
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: end;           
+        }
+        
+        div.conteiner {
+            background-color: lightsalmon;
+            margin-bottom: 20px;
+            
+            display: flex;        
+        }
+
+        div.item {
+            background-color: lightskyblue;
+            border: 1px solid black;
+        }
+
+        .fb-auto{
+            flex-basis: auto;
+        }    
+        .fb-150{
+            flex-basis: 150px;
+        }
+
+        input[type="range"] {
+            width: 300px;
+        }
+
+    </style>
+</head>
+<body>
+    <header>
+        <h1>o <strong><code>flex-basis</code></strong> se aplica aos itens do elemento Pai na direção principal</h1>
+        <p>é utilizado para definir um tamanho máximo do item.</p>
+        <p>obs.: irá se ajustar se o elemento pai tiver sua FlexBox nowrap</p>
+        <input type="range" min="200" max="900" value="600" id="ajuste"><br>
+    </header>
+    <div style="height: 140px;"></div>
+
+    <main id="main">
+        <code><del>flex-basis: auto</del></code>
+        <div class="conteiner">
+            <div class="item">conteúdo</div>
+            <div class="item">outro conteúdo</div>
+            <div class="item">o</div>
+            <div class="item">conteúdo vai ocupar o máximo que puder</div>
+            <div class="item">e</div>
+            <div class="item">se ajustará conforme o espaço for diminuindo</div>
+        </div>
+
+        <code>flex-basis: 200px</code>
+        <div class="conteiner">
+            <div class="item fb-150">conteúdo</div>
+            <div class="item fb-150">outro conteúdo</div>
+            <div class="item fb-150">o</div>
+            <div class="item fb-150">conteúdo vai ocupar o os pixeis definidos</div>
+            <div class="item fb-150">e</div>
+            <div class="item fb-150">se ajustará conforme o espaço for diminuindo</div>
+        </div>
+    </main>
+
+<script>
+  const ajuste = document.querySelector('#ajuste');
+  const conteiner = document.querySelector('main');
+
+  ajuste.addEventListener('input', () => {
+    conteiner.style.width = ajuste.value + 'px';
+  });
+</script>
+
+</body>
+</html>
