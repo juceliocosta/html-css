@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Controle do tamanho de itens flexíveis</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            border: 0;
+            box-sizing: border-box;
+        }
+
+        main {
+            margin: auto;
+            width: 1000px;
+            background-color: lightgrey;
+            padding: 10px;
+        }
+
+        header {
+            margin: auto;
+            width: 100vw;
+            height: 120px;
+            background-color: lightgray;
+            position: fixed;
+
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: end;
+        }
+
+        div.conteiner {
+            background-color: lightsalmon;
+            margin-bottom: 20px;
+
+            display: flex;
+        }
+
+        div.item {
+            background-color: lightskyblue;
+            border: 1px solid black;
+        }
+
+        .fb-250 {
+            flex-basis: 250px;
+        }
+
+        input[type="range"] {
+            width: 300px;
+        }
+
+        input[type="number"] {
+            width: 30px;
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <h1>o <strong><code>flex-basis</code></strong> se aplica aos itens do elemento Pai na direção principal</h1>
+        
+        
+        <input type="range" min="200" max="1000" value="1000" id="ajuste"><br>
+    </header>
+    <div style="height: 140px;"></div>
+
+    <main id="main">
+        <div class="conteiner">
+            <div class="item fb-250" id="iitem1">
+                <p><code>flex-basis: 250px</code></p>
+                </p>
+                    <code>flex-shrink: </code>
+                    <input type="number" name="shrink" id="ishrink1" value="1" min="0">
+                <p>
+                <p>
+                    <code>flex-grow: </code>
+                    <input type="number" name="grow" id="igrow1" value="0" min="0">
+                </p>
+            </div>
+
+            <div class="item fb-250" id="iitem2">
+                <p><code>flex-basis: 250px</code></p>
+                </p>
+                    <code>flex-shrink: </code>
+                    <input type="number" name="shrink" id="ishrink2" value="1" min="0">
+                <p>
+                <p>
+                    <code>flex-grow: </code>
+                    <input type="number" name="grow" id="igrow2" value="0" min="0">
+                </p>
+            </div>
+
+            <div class="item fb-250" id="iitem3">
+                <p><code>flex-basis: 250px</code></p>
+                </p>
+                    <code>flex-shrink: </code>
+                    <input type="number" name="shrink" id="ishrink3" value="1" min="0">
+                <p>
+                <p>
+                    <code>flex-grow: </code>
+                    <input type="number" name="grow" id="igrow3" value="0" min="0">
+                </p>
+            </div>
+        </div>
+        
+        <p>flex-shrink indica se os item podem ou não(0) encolher. padrão 1</p>
+        <p>flex-grow indica se os item podem ou não(0) crescer. padrão 0</p>
+        <p>obs.: irá se ajustar se o elemento pai tiver sua FlexBox nowrap</p>
+    </main>
+
+    <script>
+        const ajuste = document.querySelector('#ajuste');
+        const conteiner = document.querySelector('main');
+
+        ajuste.addEventListener('input', () => {
+            conteiner.style.width = ajuste.value + 'px';
+        });
+
+        const item1 = document.querySelector('#iitem1');
+        const item2 = document.querySelector('#iitem2');
+        const item3 = document.querySelector('#iitem3');
+
+        const shrink1 = document.querySelector('#ishrink1');
+        const shrink2 = document.querySelector('#ishrink2');
+        const shrink3 = document.querySelector('#ishrink3');
+
+        const grow1 = document.querySelector('#igrow1');
+        const grow2 = document.querySelector('#igrow2');
+        const grow3 = document.querySelector('#igrow3');
+        
+
+        function flexShrinkInput(inputElement, itemElement){
+            inputElement.addEventListener('input', () => {
+                itemElement.style.flexShrink = inputElement.value;
+            });
+        };
+
+        flexShrinkInput(shrink1, item1);
+        flexShrinkInput(shrink2, item2);
+        flexShrinkInput(shrink3, item3);
+
+        function flexGrowInput(inputElement, itemElement){
+            inputElement.addEventListener('input', () => {
+                itemElement.style.flexGrow = inputElement.value;
+            });
+        };
+
+        flexGrowInput(grow1, item1);
+        flexGrowInput(grow2, item2);
+        flexGrowInput(grow3, item3);
+
+    </script>
+
+</body>
+
+</html>
