@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Controle do tamanho de itens flexíveis</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            border: 0;
+            box-sizing: border-box;
+        }
+
+        main {
+            margin: auto;
+            width: 1000px;
+            background-color: lightgrey;
+            padding: 10px;
+        }
+
+        header {
+            margin: auto;
+            width: 100vw;
+            height: 120px;
+            background-color: lightgray;
+            position: fixed;
+
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: end;
+        }
+
+        div.conteiner {
+            background-color: lightsalmon;
+            margin-bottom: 20px;
+
+            display: flex;
+        }
+
+        div.item {
+            background-color: lightskyblue;
+            border: 1px solid black;
+            padding: 10px 0;
+        }
+
+        input[type="range"] {
+            width: 300px;
+        }
+
+        input[type="number"] {
+            width: 40px;
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <h1>Propriedade (shorthand) flex</h1>
+        <p>Podemos indicar na mesma linha os valores de <code>flex: grow shrink basis;</code></p>
+
+        <input type="range" min="200" max="1000" value="1000" id="ajuste"><br>
+    </header>
+    <div style="height: 140px;"></div>
+
+    <main id="main">
+
+        <p><code>flex: flex-grow, flex-shrink, flex-basis</code></p>
+
+        <div class="conteiner">
+            <div class="item" id="iitem1">
+                <p>
+                    <code>flex: </code>
+                    <input type="number" name="grow" id="igrow1" value="0" min="0">
+                    <input type="number" name="shrink" id="ishrink1" value="1" min="0">
+                    <input type="number" name="basis" id="ibasis1" value="200" min="0">;
+                </p>
+            </div>
+
+            <div class="item" id="iitem2">
+                <p>
+                    <code>flex: </code>
+                    <input type="number" name="grow2" id="igrow2" value="0" min="0">
+                    <input type="number" name="shrink2" id="ishrink2" value="1" min="0">
+                    <input type="number" name="basis2" id="ibasis2" value="200" min="0">;
+                </p>
+            </div>
+
+            <div class="item" id="iitem3">
+                <p>
+                    <code>flex: </code>
+                    <input type="number" name="grow3" id="igrow3" value="0" min="0">
+                    <input type="number" name="shrink3" id="ishrink3" value="1" min="0">
+                    <input type="number" name="basis3" id="ibasis3" value="200" min="0">;
+                </p>
+            </div>
+        </div>
+
+        <p>flex-shrink indica se os item podem ou não(0) encolher. padrão 1</p>
+        <p>flex-grow indica se os item podem ou não(0) crescer. padrão 0</p>
+        <p>obs.: irá se ajustar se o elemento pai tiver sua FlexBox nowrap</p>
+
+        <h2>Propriedade resumida</h2>
+        <p><code>flex: initial;</code> equivale à <code>flex: 0 1 auto;</code> por ser o valor padrão do flex, podemos omitir</p>
+
+        <p><code>flex: none</code> equivale à <code>flex: 0 0 auto;</code>. O menos flexível</p>
+        
+        <p><code>flex: auto</code> equivale à <code>flex: 1 1 auto;</code>. O mais flexível</p>
+
+    </main>
+
+    <script>
+        const ajuste = document.querySelector('#ajuste');
+        const conteiner = document.querySelector('main');
+        const input = document.querySelectorAll('input')
+      
+        const item1 = document.querySelector('#iitem1');
+        const item2 = document.querySelector('#iitem2');
+        const item3 = document.querySelector('#iitem3');
+
+        const grow1 = document.querySelector('#igrow1');
+        const grow2 = document.querySelector('#igrow2');
+        const grow3 = document.querySelector('#igrow3');
+
+        const shrink1 = document.querySelector('#ishrink1');
+        const shrink2 = document.querySelector('#ishrink2');
+        const shrink3 = document.querySelector('#ishrink3');
+
+        const basis1 = document.querySelector('#ibasis1');
+        const basis2 = document.querySelector('#ibasis2');
+        const basis3 = document.querySelector('#ibasis3');
+        
+        ajuste.addEventListener('input', () => {
+            conteiner.style.width = ajuste.value + 'px';
+        });
+
+        function flexInput(itemElement, inputGrow, inputShrink, inputBasis) {
+            input.forEach( input =>{
+                input.addEventListener('input', () => {
+                itemElement.style.flexGrow = inputGrow.value;
+                itemElement.style.flexShrink = inputShrink.value;
+                itemElement.style.flexBasis = inputBasis.value + 'px';
+            });
+            });
+        };
+
+        flexInput(item1, grow1, shrink1, basis1);
+        flexInput(item2, grow2, shrink2, basis2);
+        flexInput(item3, grow3, shrink3, basis3);
+
+    </script>
+
+</body>
+
+</html>
